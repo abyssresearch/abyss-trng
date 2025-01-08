@@ -1,6 +1,6 @@
 #include "wsp_trng.h"
 
-void _wsp_trng_handle_error(void) {
+void _wsp_trng_error(void) {
   exit(EXIT_FAILURE);
 }
 
@@ -18,7 +18,7 @@ uint64_t _wsp_trng_64_capture(uint64_t entropy, uint64_t *oscillation) {
     *oscillation += entropy;
     entropy = (entropy << 1) | (s.tv_nsec & 1);
   } else {
-    _wsp_trng_handle_error();
+    _wsp_trng_error();
   }
 
   return entropy;
@@ -58,7 +58,7 @@ uint32_t _wsp_trng_32_capture(uint32_t entropy, uint32_t *oscillation) {
     *oscillation += entropy;
     entropy = (entropy << 1) | (s.tv_nsec & 1);
   } else {
-    _wsp_trng_handle_error();
+    _wsp_trng_error();
   }
 
   return entropy;
@@ -98,7 +98,7 @@ uint16_t _wsp_trng_16_capture(uint16_t entropy, uint16_t *oscillation) {
     *oscillation += entropy;
     entropy = (entropy << 1) | (s.tv_nsec & 1);
   } else {
-    _wsp_trng_handle_error();
+    _wsp_trng_error();
   }
 
   return entropy;
@@ -138,7 +138,7 @@ uint8_t _wsp_trng_8_capture(uint8_t entropy, uint8_t *oscillation) {
     *oscillation += entropy;
     entropy = (entropy << 1) | (s.tv_nsec & 1);
   } else {
-    _wsp_trng_handle_error();
+    _wsp_trng_error();
   }
 
   return entropy;
